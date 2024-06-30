@@ -5,13 +5,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Github, Twitter, X, XIcon } from 'lucide-react';
+import { Github, Twitter } from 'lucide-react';
 import Image from 'next/image';
 
-import { motion } from 'framer-motion';
 import MotionShape from '@/components/MotionShape';
-import Container from '@/components/Container';
-import AnimatedContainer from '@/components/AnimatedContainer';
 
 interface GithubProfileResponse {
   login: string;
@@ -121,8 +118,29 @@ async function GithubProfile({ username = 'vercel' }: { username?: string }) {
 
 export default function Home() {
   return (
-    <AnimatedContainer>
+    <main className="dark relative grid h-full w-full place-content-center bg-background text-foreground">
       <div className="flex flex-col gap-12">
+        <Image
+          src="/shape-3.svg"
+          alt=""
+          width={283}
+          height={283}
+          className="animate-spin-slow"
+        />
+        <Image
+          src="/shape-1.svg"
+          alt=""
+          width={283}
+          height={283}
+          className="animate-spin-slow delay-100"
+        />
+        <Image
+          src="/shape-2.svg"
+          alt=""
+          width={283}
+          height={283}
+          className="animate-spin-slow delay-200"
+        />
         <GithubProfile username="jacksonmills" />
         <GithubProfile username="jacksonmills" />
         <GithubProfile username="jacksonmills" />
@@ -144,6 +162,44 @@ export default function Home() {
         <GithubProfile username="jacksonmills" />
         <GithubProfile username="jacksonmills" />
       </div>
-    </AnimatedContainer>
+      <MotionShape
+        className="left-12 top-12"
+        imageComp={
+          <Image
+            src="/shape-3.svg"
+            alt=""
+            width={283}
+            height={283}
+            className="animate-spin-slow"
+          />
+        }
+      />
+
+      <MotionShape
+        className="left-12 top-3/4"
+        imageComp={
+          <Image
+            src="/shape-1.svg"
+            alt=""
+            width={283}
+            height={283}
+            className="animate-spin-slow delay-75"
+          />
+        }
+      />
+
+      <MotionShape
+        className="right-16 top-1/4"
+        imageComp={
+          <Image
+            src="/shape-2.svg"
+            alt=""
+            width={283}
+            height={283}
+            className="animate-spin-slow delay-100"
+          />
+        }
+      />
+    </main>
   );
 }

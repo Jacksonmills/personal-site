@@ -1,35 +1,26 @@
 'use client';
 
-import React, { use, useEffect, useState } from 'react';
+import React from 'react';
 
-import Image from 'next/image';
-
-import {
-  inView,
-  motion,
-  progress,
-  scroll,
-  useScroll,
-  useSpring,
-} from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface MotionShapeProps extends React.HTMLAttributes<HTMLDivElement> {
   imageComp: React.ReactNode;
-  containerRef: React.RefObject<HTMLDivElement>;
 }
 
 export default function MotionShape({
   className,
   imageComp,
-  containerRef,
 }: MotionShapeProps) {
   const motionDivRef = React.useRef<HTMLDivElement>(null);
-  const staticDivRef = React.useRef<HTMLDivElement>(null);
 
+  const debug = false;
+
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: motionDivRef,
-    offset: ['0 1', '1.33 1'],
+    offset: ['0 1', '1 1'],
   });
   const scaleX = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
   const bottomValue = useSpring(scrollYProgress, {
@@ -42,22 +33,23 @@ export default function MotionShape({
       <motion.div
         ref={motionDivRef}
         style={{
-          scale: scaleX,
-          bottom: bottomValue,
+          scale: shouldReduceMotion ? 1 : scaleX,
+          bottom: shouldReduceMotion ? 0 : bottomValue,
         }}
         className={cn('absolute', className)}
       >
         {imageComp}
       </motion.div>
-      <div
-        ref={staticDivRef}
-        className={cn(
-          'absolute rounded-full outline-dashed outline-red-500',
-          className
-        )}
-      >
-        <span className="opacity-5">{imageComp}</span>
-      </div>
+      {debug && (
+        <div
+          className={cn(
+            'absolute rounded-full outline-dashed outline-red-500',
+            className
+          )}
+        >
+          <span className="opacity-5">{imageComp}</span>
+        </div>
+      )}
     </>
   );
 }
