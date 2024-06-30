@@ -125,21 +125,21 @@ export default function Home() {
           alt=""
           width={283}
           height={283}
-          className="animate-spin-slow"
+          className="motion-safe:animate-spin-slow"
         />
         <Image
           src="/shape-1.svg"
           alt=""
           width={283}
           height={283}
-          className="animate-spin-slow delay-100"
+          className="motion-safe:animate-spin-slow delay-100"
         />
         <Image
           src="/shape-2.svg"
           alt=""
           width={283}
           height={283}
-          className="animate-spin-slow delay-200"
+          className="motion-safe:animate-spin-slow delay-200"
         />
         <GithubProfile username="jacksonmills" />
         <GithubProfile username="jacksonmills" />
@@ -170,7 +170,7 @@ export default function Home() {
             alt=""
             width={283}
             height={283}
-            className="animate-spin-slow"
+            className="motion-safe:animate-spin-slow"
           />
         }
       />
@@ -183,7 +183,7 @@ export default function Home() {
             alt=""
             width={283}
             height={283}
-            className="animate-spin-slow delay-75"
+            className="motion-safe:animate-spin-slow delay-75"
           />
         }
       />
@@ -196,7 +196,7 @@ export default function Home() {
             alt=""
             width={283}
             height={283}
-            className="animate-spin-slow delay-100"
+            className="motion-safe:animate-spin-slow delay-100"
           />
         }
       />
