@@ -8,6 +8,11 @@ import {
 import { Github, Twitter, X, XIcon } from 'lucide-react';
 import Image from 'next/image';
 
+import { motion } from 'framer-motion';
+import MotionShape from '@/components/MotionShape';
+import Container from '@/components/Container';
+import AnimatedContainer from '@/components/AnimatedContainer';
+
 interface GithubProfileResponse {
   login: string;
   id: number;
@@ -52,7 +57,7 @@ async function GithubProfile({ username = 'vercel' }: { username?: string }) {
   }
 
   return (
-    <div className="flex items-center gap-4 rounded border bg-border/20 px-8 py-6">
+    <div className="flex w-full items-center gap-4 rounded border bg-border/20 px-8 py-6">
       <Image
         src={profile.avatar_url}
         alt="Vercel Logo"
@@ -116,8 +121,29 @@ async function GithubProfile({ username = 'vercel' }: { username?: string }) {
 
 export default function Home() {
   return (
-    <main className="dark grid h-screen w-full place-content-center bg-background text-foreground">
-      <GithubProfile username="jacksonmills" />
-    </main>
+    <AnimatedContainer>
+      <div className="flex flex-col gap-12">
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+        <GithubProfile username="jacksonmills" />
+      </div>
+    </AnimatedContainer>
   );
 }
